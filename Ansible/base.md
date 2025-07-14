@@ -2,7 +2,7 @@
 - 先检查ANSIBLE_CONFIG变量定义的配置文件
 - 当前目录下的./ansible.cfg
 - 家目录下~/ansible.cfg
-- /etc/ansible/ansible.cfg.
+- /etc/ansible/ansible.cfg
 
 **ansible工作流程**
 - **陈述：** master连接被管理的主机，将模块（脚本）文件传入被管理的主机并执行 
@@ -252,4 +252,9 @@ node03 ansible_ssh_pass=密码 #自定义密码而不使用密钥
      作品：蜀道难
      好友：汪伦
   ```
+
+**playbook**
+- **新建用户**
+- **新建磁盘分区**
+- **软件安装及升级**
 
