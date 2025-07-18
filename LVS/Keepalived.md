@@ -1,0 +1,3 @@
+**Keepalived：** Keepalived调用ipvsadm生成规则，自动实现将vip转移到可用的lvs节点上 
+- **工作原理：** 它工作在多个lvs主机节点上，当前活动的节点叫master，备用节点叫backup，master会不停的向backup节点通告自己的心跳，该通告基于vrrp协议，backup节点一旦接受不到master的通告消息，就会把lvs的信息与规则放在自己的服务器上，从而代替master节点
+- **VRRP协议：** vrrp协议提供一个vip，它可以设定哪个路由器是活动节点，当故障发生时进行切换，vip也会随之到达新的路由器上，但是新路由器的mac地址与之前master的mac地址不一样，客户端的arp表也没有更新，为了解决这个问题，vrrp不但提供vip还会提供vmac地址，这个vmac地址大家都可以使用，当故障发生时，虽然路由器发生变化了，但是客户端使用的是vip和vmac地址，所以不会有任何影响
