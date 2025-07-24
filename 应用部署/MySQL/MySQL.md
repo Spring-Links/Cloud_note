@@ -65,3 +65,16 @@ skip-grant-tables
 
 3.修改时区
 `set global time_zone='+8:00';` 将时区修改为中国标准时间.UTC+8
+
+
+==关于mysql5.7文件缺失的问题==
+**缺失文件**
+- libncurses.so.5
+- libtinfo.so.5
+
+**解决办法**
+- 创建软链接
+```
+ln -s /usr/lib64/libtinfo.so.6 /usr/lib64/libtinfo.so.5
+ln -s /usr/lib64/libncurses.so.6 /usr/lib64/libncurses.so.5
+```
