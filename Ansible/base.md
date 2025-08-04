@@ -7,11 +7,54 @@
 **ansible工作流程**
 - **陈述：** master连接被管理的主机，将模块（脚本）文件传入被管理的主机并执行 
 
-**密钥**
+**设置主机名及解析**
+- **在所有服务器上配置主机名**
+`hostnamectl set-hostname node01`
+- **将各主机名及ip解析写入控制端主机中**
+`vim /etc/hosts`
+
+**生成及分发密钥**
 - **生成密钥**
 `ssh-keygen -f /root/.ssh/id_rsa -N " `
 - **传输密钥**
-`ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.174.124`
+```
+for i in node01 node02 node03 
+do
+  ssh-copy-id $i
+done
+```
+- **测试ssh密钥是否配置成功**
+```
+-- 在master主机中测试是否能无密码连接
+ssh node01
+exit
+ssh node02
+exit
+```
+
+**安装python3.12**
+```
+验证环境
+python3.12 --version
+```
+
+**安装ansible**
+```
+-- 使用pip3.12安装
+pip3.12 install ansible
+# pip3.12 install --user ansible --用户级安装
+
+-- 验证安装
+ansible --version
+```
+
+**编写ansible配置文件、主机文件**
+```
+mkdir /etc/ansible
+vim /etc/ansible/ansible.cfg
+vim /etc/ansible/hosts
+-- 测试是否连通
+```
 
 **命令行基本格式**
 `ansible 主机集合 -m 模块名 -a 参数`
