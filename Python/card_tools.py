@@ -12,7 +12,13 @@ card_lst=[{'name':'jack',
               'phone':'911',
               'email':'jack@email.com',
               'addr':'shang hai'
-              }]
+              },
+          {'name': 'monika',
+           'phone': '911',
+           'email': 'jack@email.com',
+           'addr': 'shang hai'
+           }
+          ]
 
 def new_card():
     print('-'*50)
@@ -50,10 +56,10 @@ def search_card():
     search_name=input('请输入要搜索的姓名：')
     for data in card_lst:
         if data['name']==search_name:
-            for title in ['姓名', '电话', '邮箱', '地址']:
-                print(title, end='\t\t')
-            print('\n')
-            print('=' * 50)
+            # for title in ['姓名', '电话', '邮箱', '地址']:
+            #     print(title, end='\t\t')
+            # print('\n')
+            # print('=' * 50)
             for data in card_lst:
                 print(f'{data['name']}\t\t{data['phone']}\t\t{data['email']}\t\t{data['addr']}')
             deal_card(data)
