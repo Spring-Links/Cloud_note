@@ -15,7 +15,7 @@
 
 **生成及分发密钥**
 - **生成密钥**
-`ssh-keygen -f /root/.ssh/id_rsa -N " `
+`ssh-keygen -f /root/.ssh/id_rsa -N '' `
 - **传输密钥**
 ```
 for i in node01 node02 node03 
@@ -32,18 +32,20 @@ ssh node02
 exit
 ```
 
-**安装python3.12**
+**更新EPEL源**
 ```
-验证环境
-python3.12 --version
+sudo yum install -y epel-release
 ```
 
-**安装ansible**
+**安装python3和pip**
 ```
--- 使用pip3.12安装
-pip3.12 install ansible
-# pip3.12 install --user ansible --用户级安装
+sudo dnf install -y python3 python3-pip   # 安装python3和pip3
+python3 --version
+pip3 install --upgrade pip   # 更新pip
+```
 
+**安装ansible（阿里源）**
+```pip3 install ansible -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
 -- 验证安装
 ansible --version
 ```

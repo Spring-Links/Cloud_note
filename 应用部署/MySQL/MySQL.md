@@ -60,7 +60,7 @@ rpm -ivh --nodeps --force mysql-community-server-8.0.40-1.el8.x86_64.rpm
 2.修改密码
 `mysql -uroot -p` 登录mysql
 `alter user 'root'@'localhost' identified with mysql_native_password by 'root';` 将密码修改为root
-alter user 'root'@'localhost' identified with caching_sha2_password by 'root';
+alter user 'root'@'localhost' identified with caching_sha2_password by 'password';
 skip-grant-tables
 
 3.修改时区
@@ -78,3 +78,5 @@ skip-grant-tables
 ln -s /usr/lib64/libtinfo.so.6 /usr/lib64/libtinfo.so.5
 ln -s /usr/lib64/libncurses.so.6 /usr/lib64/libncurses.so.5
 ```
+
+mysql> set global validate_password_policy=0;
