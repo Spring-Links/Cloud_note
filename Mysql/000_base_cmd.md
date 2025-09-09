@@ -17,7 +17,7 @@
 > alter table table_name add column column_name data_type;
 
 **向表中插入数据(已知表字段结构)**
-> insert into table_name values('values1','values2')
+> insert into table_name(column_name) values('values1','values2')
 
 **查看表中的数据**
 > select * from table_name
@@ -42,3 +42,8 @@
 
 **修改表的字符集**
 > alter table student convert to character set utf8mb4 collate utf8mb4_unicode_ci;
+
+insert
+delete
+update
+select

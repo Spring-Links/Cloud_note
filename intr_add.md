@@ -27,8 +27,18 @@
 在zabbix的web页面配置自动注册动作，实现发现主机自动添加。并配置邮件告警系统，
 通过事件等级选择性向管理员报告客户端主机中的服务状态
 
+搭建nginx+tomcat负载均衡及动静分离集群
+项目概述：
+该集群能够通过nginx实现将客户端的请求根据不同调度策略算法请求至后端tomcat集群中，从而实现负载均衡保证服务的可用性。使用nginx服务器处理静态资源的请求，而tomcat服务器则处理动态请求从而完成动静分离的集群部署，使集群更加高效的协作。
+职责贡献：
+在nginx服务器中配置upstream模块，将tomcat集群的ip地址写入该模块并采用加权轮询的方式实现负载均衡
+在location块配置将客户端对应静态资源的处理请求统一交由nginx处理，将动态请求交给后端的tomcat去处理
+在tomcat服务器中配置集群的Java环境并部署tomcat服务，完成站点的部署并对网站进行测试，确保集群正确处理了请求
+
+ansible自动化部署服务
+项目概述：安装配置ansible及被控机器，通过编写playbook剧本完成jdk的tar包分发、安装处理环境配置，并验证环境。ansible的自动化部署使部署的过程更加规范并提升了多节点部署的效率
+职责贡献：
+编写playbook脚本，所有copy模块进行tar包的分发，并设置权限，使用unarchive模块对包进行解压
+使用lineinfile模块将java 的环境变量信息写入profile文件中并重载环境变量使当前会话生效
+
 paramiko
-
-搭建lvs+keepalived+nginx
-
-nginx+tomcat
